@@ -2,7 +2,7 @@
   <div>
     <!-- Top Menu -->
     <header class="menu">
-      <img src="/brand-logo.png" alt="Brand Logo" class="brand-logo" />
+      <img src="../public/brand-logo-black.jpeg" alt="Brand Logo" class="brand-logo" />
       <button @click="toggleLang">{{ currentLang.toUpperCase() }}</button>
     </header>
 
@@ -77,10 +77,10 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  background-color: #008045;
+  background-color: #FFFFFF;
   opacity: 0.9;
   z-index: 10;
-  box-shadow: 0 6px 20px rgba(0, 80, 45, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 80, 45, 0.75);
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 }
@@ -100,7 +100,7 @@ body {
   width: 50px;
   height: 50px;
   border: none;
-  background-color: #d6d6d6;
+  background-color: #008045;
   border-radius: 50%;
   cursor: pointer;
   font-weight: bold;
