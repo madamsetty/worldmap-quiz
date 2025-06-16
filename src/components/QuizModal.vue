@@ -8,39 +8,43 @@
 
       <h1 class="title">{{ title }}</h1>
       <h3 class="program">{{ program }}</h3>
-      <p class="description">{{ description }}</p>
 
-      <div class="media">
-        <!-- YouTube embed -->
-        <iframe
-          v-if="youTubeEmbedUrl"
-          :src="youTubeEmbedUrl"
-          frameborder="0"
-          allow="autoplay; encrypted-media; fullscreen"
-          class="youtube-iframe"
-        ></iframe>
+      <!-- Scrollable wrapper starts here -->
+      <div class="content-wrapper">
+        <p class="description">{{ description }}</p>
 
-        <!-- Local or remote video -->
-        <video
-          v-else-if="videoSource"
-          controls
-          autoplay
-          muted
-          playsinline
-          width="100%"
-          height="260"
-        >
-          <source :src="videoSource" type="video/mp4" />
-        </video>
+        <div class="media">
+          <!-- YouTube embed -->
+          <iframe
+            v-if="youTubeEmbedUrl"
+            :src="youTubeEmbedUrl"
+            frameborder="0"
+            allow="autoplay; encrypted-media; fullscreen"
+            class="youtube-iframe"
+          ></iframe>
 
-        <!-- Fallback image -->
-        <img
-          v-else-if="imageSource"
-          :src="imageSource"
-          alt="City Image"
-          width="100%"
-          height="260"
-        />
+          <!-- Local or remote video -->
+          <video
+            v-else-if="videoSource"
+            controls
+            autoplay
+            muted
+            playsinline
+            width="100%"
+            height="260"
+          >
+            <source :src="videoSource" type="video/mp4" />
+          </video>
+
+          <!-- Fallback image -->
+          <img
+            v-else-if="imageSource"
+            :src="imageSource"
+            alt="City Image"
+            width="100%"
+            height="260"
+          />
+        </div>
       </div>
     </div>
   </transition>
@@ -86,14 +90,14 @@ const videoSource = computed(() => {
   if (!props.videoUrl || isYouTubeVideo.value) return ''
   return props.videoUrl.startsWith('http')
     ? props.videoUrl
-    : baseURL + 'img/' + props.videoUrl
+    : baseURL + 'src/assets/img/' + props.videoUrl
 })
 
 const imageSource = computed(() => {
   if (!props.imageUrl) return ''
   return props.imageUrl.startsWith('http')
     ? props.imageUrl
-    : baseURL + 'img/' + props.imageUrl
+    : baseURL + 'src/assets/img/' + props.imageUrl
 })
 </script>
 
@@ -108,6 +112,8 @@ const imageSource = computed(() => {
   border: 1px solid #ccc;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   z-index: 100;
+  max-height: 80vh;
+  overflow: hidden;
 }
 
 .modal-header {
@@ -139,6 +145,28 @@ const imageSource = computed(() => {
 .program {
   color: #008045;
   font-size: 1.25rem;
+}
+
+/* Scrollable container for description and media */
+.content-wrapper {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-top: 1rem;
+}
+
+/* Optional custom scrollbar styling */
+.content-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-wrapper::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.content-wrapper::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .description {

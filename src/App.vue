@@ -2,8 +2,8 @@
   <div>
     <!-- Top Menu -->
     <header class="menu">
-      <img src="../public/brand-logo-black.jpeg" alt="Brand Logo" class="brand-logo" />
-      <button @click="toggleLang">{{ currentLang.toUpperCase() }}</button>
+      <img src="/brand-logo-black.jpeg" alt="Brand Logo" class="brand-logo" />
+      <button @click="toggleLang">{{ currentLang }}</button>
     </header>
 
     <!-- 2D World Map Component -->
@@ -20,6 +20,10 @@
       :visible="!!selectedCity"
       @close="selectedCity = null"
     />
+    <EthopiaQuizModal
+      :visible="!!selectedCityEthiopia"
+      @close="selectedCityEthiopia = null"
+    />
   </div>
 </template>
 
@@ -29,6 +33,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import WorldMap from './components/WorldMap.vue'
 import QuizModal from './components/QuizModal.vue'
+import EthopiaQuizModal from './components/EthiopiaModal.vue'
 
 // Reactive state
 const selectedCity = ref(null)
@@ -37,6 +42,7 @@ const prg = ref('')
 const desc = ref('')
 const vUrl = ref('')
 const iUrl = ref('')
+const selectedCityEthiopia = ref(null)
 
 // i18n language toggle
 const { locale } = useI18n()
@@ -49,12 +55,19 @@ function toggleLang() {
 
 // Handler for map click
 function onCitySelected({ city, title, program, description, videoUrl, imageUrl }) {
-  selectedCity.value = city
-  ttl.value = title
-  prg.value = program
-  desc.value = description
-  vUrl.value = videoUrl
-  iUrl.value = imageUrl
+  console.log("Selected: ", city);
+  if(city !== "Ethiopia" && city !== "Äthiopien")
+  {
+    selectedCity.value = city
+    ttl.value = title
+    prg.value = program
+    desc.value = description
+    vUrl.value = videoUrl
+    iUrl.value = imageUrl
+  }
+  else {
+    selectedCityEthiopia.value = city;
+  }
 }
 </script>
 
@@ -62,7 +75,7 @@ function onCitySelected({ city, title, program, description, videoUrl, imageUrl 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   color: #FFFFFF;
 }
 
@@ -74,7 +87,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   background-color: #FFFFFF;
