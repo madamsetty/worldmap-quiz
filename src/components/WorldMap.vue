@@ -61,7 +61,8 @@ function initMap() {
   container.value.appendChild(renderer.domElement)
 
   const loader = new THREE.TextureLoader()
-  loader.load('/world-map.jpg', (texture) => {
+  const mapimage = import.meta.env.BASE_URL + 'world-map.jpg'
+  loader.load(mapimage, (texture) => {
     const mapWidth = 1250
     const mapHeight = 700
 

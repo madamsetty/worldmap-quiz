@@ -60,6 +60,8 @@ const props = defineProps([
   'visible'
 ])
 
+const baseURL = import.meta.env.BASE_URL
+
 const cityName = computed(() => props.city)
 const title = computed(() => props.title)
 const program = computed(() => props.program)
@@ -85,14 +87,14 @@ const videoSource = computed(() => {
   if (!props.videoUrl || isYouTubeVideo.value) return ''
   return props.videoUrl.startsWith('http')
     ? props.videoUrl
-    : `/img/${props.videoUrl}`
+    : baseURL + 'img/' + props.videoUrl
 })
 
 const imageSource = computed(() => {
   if (!props.imageUrl) return ''
   return props.imageUrl.startsWith('http')
     ? props.imageUrl
-    : `/img/${props.imageUrl}`
+    : baseURL + 'img/' + props.imageUrl
 })
 </script>
 
