@@ -16,8 +16,7 @@
           v-if="youTubeEmbedUrl"
           :src="youTubeEmbedUrl"
           frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
+          allow="autoplay; encrypted-media; fullscreen"
           class="youtube-iframe"
         ></iframe>
 
@@ -77,7 +76,7 @@ watch(() => props.visible, (val) => {
   if (val && isYouTubeVideo.value) {
     const videoId =
       props.videoUrl.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/)?.[1] ?? ''
-    youTubeEmbedUrl.value = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`
+    youTubeEmbedUrl.value = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0`
   } else {
     youTubeEmbedUrl.value = ''
   }
