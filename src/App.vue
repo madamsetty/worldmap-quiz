@@ -75,6 +75,7 @@ body {
   position: sticky;
   top: 0;
   background-color: #008045;
+  opacity: 0.9;
   z-index: 10;
   box-shadow: 0 6px 20px rgba(0, 80, 45, 0.5);
 }
@@ -82,18 +83,21 @@ body {
 .menu h1 {
   margin: 0;
   font-size: 1.5rem;
+  color: ##FFFFFF;
 }
 
 .menu button {
   padding: 0.5rem 1rem;
   border: none;
-  background-color: #f0f0f0;
+  background-color: #dc371f;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  color: #FFFFFF;
 }
 
 .menu button:hover {
   background-color: #e0e0e0;
+  color: #000000;
 }
 </style>

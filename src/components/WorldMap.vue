@@ -96,7 +96,7 @@ function renderMarkers() {
     const x = (u - 0.5) * mapWidth
     const y = (0.5 - v) * mapHeight
 
-    const markerGeometry = new THREE.CircleGeometry(8, 32)
+    const markerGeometry = new THREE.CircleGeometry(9, 32)
 
     const colorMap = {
       education: 0x2e86de,
@@ -123,7 +123,7 @@ function renderMarkers() {
     const tooltipTexture = new THREE.CanvasTexture(canvas)
     const tooltipMaterial = new THREE.SpriteMaterial({ map: tooltipTexture })
     const tooltip = new THREE.Sprite(tooltipMaterial)
-    tooltip.scale.set(80, 20, 1)
+    tooltip.scale.set(120, 30, 1)
     tooltip.position.set(x, y + 20, 1.1)
     tooltip.visible = false
     scene.add(tooltip)
