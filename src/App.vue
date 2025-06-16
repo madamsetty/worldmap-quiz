@@ -3,7 +3,7 @@
     <!-- Top Menu -->
     <header class="menu">
       <h1>World Map Quiz</h1>
-      <button @click="toggleLang">{{ currentLang.toUpperCase() }}</button>
+      <button @click="toggleLang">{{ currentLang }}</button>
     </header>
 
     <!-- 2D World Map Component -->
@@ -67,6 +67,8 @@ body {
 
 /* Header Menu Styles */
 .menu {
+  width: 70%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,6 +80,8 @@ body {
   opacity: 0.9;
   z-index: 10;
   box-shadow: 0 6px 20px rgba(0, 80, 45, 0.5);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .menu h1 {
@@ -87,17 +91,23 @@ body {
 }
 
 .menu button {
-  padding: 0.5rem 1rem;
+  width: 50px;
+  height: 50px;
   border: none;
-  background-color: #dc371f;
-  border-radius: 8px;
+  background-color: #d6d6d6;
+  border-radius: 50%;
   cursor: pointer;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
 }
 
 .menu button:hover {
-  background-color: #e0e0e0;
-  color: #000000;
+  background-color: #e74c3c;
+  color: #ffffff;
 }
 </style>
