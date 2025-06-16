@@ -2,8 +2,8 @@
   <div>
     <!-- Top Menu -->
     <header class="menu">
-      <h1>World Map Quiz</h1>
-      <button @click="toggleLang">{{ currentLang }}</button>
+      <img src="/brand-logo.png" alt="Brand Logo" class="brand-logo" />
+      <button @click="toggleLang">{{ currentLang.toUpperCase() }}</button>
     </header>
 
     <!-- 2D World Map Component -->
@@ -22,6 +22,7 @@
     />
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue'
@@ -82,6 +83,11 @@ body {
   box-shadow: 0 6px 20px rgba(0, 80, 45, 0.5);
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
+}
+
+.brand-logo {
+  height: 40px;
+  object-fit: contain;
 }
 
 .menu h1 {
