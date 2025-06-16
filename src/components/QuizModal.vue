@@ -64,6 +64,7 @@ const props = defineProps([
 ])
 
 const baseURL = import.meta.env.BASE_URL
+const isDev = import.meta.env.DEV
 
 const cityName = computed(() => props.city)
 const title = computed(() => props.title)
@@ -86,18 +87,22 @@ watch(() => props.visible, (val) => {
   }
 })
 
-const videoSource = computed(() => {
-  if (!props.videoUrl || isYouTubeVideo.value) return ''
-  return props.videoUrl.startsWith('http')
-    ? props.videoUrl
-    : baseURL + 'src/assets/img/' + props.videoUrl
-})
-
 const imageSource = computed(() => {
   if (!props.imageUrl) return ''
-  return props.imageUrl.startsWith('http')
-    ? props.imageUrl
-    : baseURL + 'src/assets/img/' + props.imageUrl
+
+  // If full URL, just use it
+  if (props.imageUrl.startsWith('http')) return props.imageUrl
+
+  // Otherwise, construct the path relative to public folder with base URL
+  return import.meta.env.BASE_URL + 'img/' + props.imageUrl
+})
+
+const videoSource = computed(() => {
+  if (!props.videoUrl || isYouTubeVideo.value) return ''
+
+  if (props.videoUrl.startsWith('http')) return props.videoUrl
+
+  return import.meta.env.BASE_URL + 'img/' + props.videoUrl
 })
 </script>
 

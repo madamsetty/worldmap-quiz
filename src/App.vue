@@ -2,7 +2,7 @@
   <div>
     <!-- Top Menu -->
     <header class="menu">
-      <img src="/brand-logo-black.jpeg" alt="Brand Logo" class="brand-logo" />
+      <img :src="logoSrc" alt="Brand Logo" class="brand-logo" />
       <button @click="toggleLang">{{ currentLang }}</button>
     </header>
 
@@ -34,6 +34,8 @@ import { useI18n } from 'vue-i18n'
 import WorldMap from './components/WorldMap.vue'
 import QuizModal from './components/QuizModal.vue'
 import EthopiaQuizModal from './components/EthiopiaModal.vue'
+
+const logoSrc = ref(import.meta.env.BASE_URL + 'img/brand-logo-black.jpeg')
 
 // Reactive state
 const selectedCity = ref(null)
