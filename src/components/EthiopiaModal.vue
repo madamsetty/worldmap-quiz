@@ -33,8 +33,10 @@
         <div class="video-container">
           <iframe
             class="video-embed"
-            src="https://www.youtube.com/embed/C3tKCzOrde8?start=5"
+            src="https://www.youtube.com/embed/C3tKCzOrde8?loop=1&playlist=C3tKCzOrde8&autoplay=1"
             title="Ethiopia Sponsorship Video"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
